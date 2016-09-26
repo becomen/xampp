@@ -50,7 +50,7 @@ EXPOSE 80
 RUN echo '/opt/lampp/lampp start' >> /startup.sh
 RUN echo '/usr/bin/supervisord -n' >> /startup.sh
 RUN echo '<?php' >> /opt/lampp/htdocs/index.php
-RUN echo 'echo "deneme";' >> /opt/lampp/htdocs/index.php
+RUN echo 'echo "deneme 123";' >> /opt/lampp/htdocs/index.php
 RUN echo '?>' >> /opt/lampp/htdocs/index.php
 
 CMD ["sh", "/startup.sh"]
