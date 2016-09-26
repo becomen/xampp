@@ -16,7 +16,6 @@ RUN sed -i.bak s'/Require local/Require all granted/g' /opt/lampp/etc/extra/http
 
 RUN rm -rf /opt/lampp/htdocs/*
 
-COPY index.php /opt/lampp/htdocs/
 
 # SSH server
 RUN apt-get install -y -q supervisor openssh-server
@@ -50,6 +49,9 @@ EXPOSE 80
 # write a startup script
 RUN echo '/opt/lampp/lampp start' >> /startup.sh
 RUN echo '/usr/bin/supervisord -n' >> /startup.sh
+RUN echo '<?php' >> /opt/lampp/htdocs/index.php
+RUN echo 'echo "deneme";' >> /opt/lampp/htdocs/index.php
+RUN echo '?>' >> /opt/lampp/htdocs/index.php
 
 CMD ["sh", "/startup.sh"]
 
